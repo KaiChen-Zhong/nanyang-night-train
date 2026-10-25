@@ -1,0 +1,125 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@theme {
+  --font-display: "Noto Serif SC", "Songti SC", serif;
+  --font-sans: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  --font-mono: ui-monospace, "IBM Plex Mono", monospace;
+
+  --color-bg: #f3efe6;
+  --color-bg-warm: #ebe4d6;
+  --color-surface: #faf7f1;
+  --color-ink: #171512;
+  --color-ink-soft: #3a3530;
+  --color-muted: #6b6560;
+  --color-subtle: #8a8378;
+  --color-line: #d8d0c2;
+  --color-line-strong: #c4baa8;
+  --color-pine: #3a5248;
+  --color-pine-deep: #24362f;
+  --color-pine-fg: #f3efe6;
+  --color-warn: #8a4b32;
+  --color-ok: #3f5d45;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+
+  --shadow-soft: 0 12px 40px -24px rgb(23 21 18 / 0.28);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-pine);
+    color: var(--color-pine-fg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.leaflet-container {
+  background: var(--color-bg-warm);
+  font-family: var(--font-sans);
+}
+
+.leaflet-control-attribution {
+  font-size: 10px;
+  background: color-mix(in oklab, var(--color-surface) 88%, transparent) !important;
+}
+
+.route-pin {
+  background: var(--color-pine);
+  color: var(--color-pine-fg);
+  border: 2px solid var(--color-surface);
+  border-radius: 999px;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgb(23 21 18 / 0.22);
+}
+
+.route-pin.is-on {
+  background: var(--color-ink);
+  width: 32px;
+  height: 32px;
+}
+
+.map-pop {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  min-width: 8rem;
+}
+
+.map-pop-note {
+  color: var(--color-muted);
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
